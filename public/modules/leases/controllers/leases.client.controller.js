@@ -5,13 +5,17 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
     function($scope, $stateParams, $location, Authentication, Leases) {
         $scope.authentication = Authentication;
 
+        $scope.startDateOpen = false;
+
         // Create new Lease
         $scope.create = function() {
         	// Create new Lease object
             var lease = new Leases({
                 tenant: this.tenant,
                 property: this.property,
-                landlord: this.landlord
+                landlord: this.landlord,
+                startDate: this.startDate,
+                leasePeriods: this.leasePeriods
 
             });
 
@@ -27,6 +31,8 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
               this.tenant = '';
               this.property = '';
               this.landlord = '';
+              this.startDate = '';
+              this.leasePeriods  = [];
             }
         };
 
@@ -68,6 +74,16 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
             $scope.lease = Leases.get({
                 leaseId: $stateParams.leaseId
             });
+        };
+
+        // Datepicker
+        // TODO this code isn't working so well right now
+        $scope.startDateOpen = false;
+        $scope.endDateOpen = false;
+
+        $scope.toggleDatePicker = function(event, datePicker) {
+          var datePickerOpenName = datePicker + 'Open';
+          $scope[datePickerOpenName] = !$scope[datePickerOpenName];
         };
     }
 ]);

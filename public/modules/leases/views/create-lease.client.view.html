@@ -24,6 +24,30 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="startDate">Start Date</label>
+                    <div class="controls">
+                      <!-- TODO datepicker not cooperating
+                      <input name="startDate" type="text" datepicker-popup=""
+                                        is-open="startDate" close-text="Close"
+                                        data-ng-model=startDate
+                                      ``  novalidate="novalidate" class="form-control"/> -->
+                      <input name="startDate" type="date" data-ng-model=startDate
+                       class="form-control"/>
+                      <!-- <span class="input-group-btn">
+                        <button type="button" ng-click="toggleDatePicker($event, 'startDate')"  class="btn btn-default">
+                          <i class="fa fa-calendar"></i>
+                        </button>
+                      </span> -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="endDate">End Date</label>
+                    <div class="controls">
+                      <input name="endDate" type="date" data-ng-model=endDate
+                       class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">
