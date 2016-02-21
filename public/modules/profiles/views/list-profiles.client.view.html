@@ -1,0 +1,14 @@
+<section data-ng-controller="ProfilesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Profiles</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="profile in profiles" data-ng-href="#!/profiles/{{profile._id}}" class="list-group-item">
+            <small class="list-group-item-text">{{profile.created | date:'medium'}} / {{profile.user.displayName}}</small>
+            <h4 class="list-group-item-heading">{{profile.name}}</h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!profiles.$resolved || profiles.length">
+    	No Profiles yet, why don't you <a href="/#!/profiles/create">create one</a>?
+    </div>
+</section>

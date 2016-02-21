@@ -1,0 +1,14 @@
+<section data-ng-controller="LandlordsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Landlords</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="landlord in landlords" data-ng-href="#!/landlords/{{landlord._id}}" class="list-group-item">
+            <small class="list-group-item-text">{{landlord.created | date:'medium'}} / {{landlord.user.displayName}}</small>
+            <h4 class="list-group-item-heading">{{landlord.name}}</h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!landlords.$resolved || landlords.length">
+    	No Landlords yet, why don't you <a href="/#!/landlords/create">create one</a>?
+    </div>
+</section>

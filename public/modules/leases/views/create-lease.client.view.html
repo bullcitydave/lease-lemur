@@ -1,0 +1,35 @@
+<section data-ng-controller="LeasesController">
+    <div class="page-header">
+        <h1>New Lease</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="tenant">Tenant</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="tenant" id="tenant" class="form-control" placeholder="Tenant name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="property">Property</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="property" id="property" class="form-control" placeholder="The property address or other identifier" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="landlord">Landlord</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="landlord" id="landlord" class="form-control" placeholder="Landlord name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong>{{error}}</strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

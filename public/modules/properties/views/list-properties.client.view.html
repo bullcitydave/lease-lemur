@@ -1,0 +1,14 @@
+<section data-ng-controller="PropertiesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Properties</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="property in properties" data-ng-href="#!/properties/{{property._id}}" class="list-group-item">
+            <small class="list-group-item-text">{{property.created | date:'medium'}} / {{property.user.displayName}}</small>
+            <h4 class="list-group-item-heading">{{property.name}}</h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!properties.$resolved || properties.length">
+    	No Properties yet, why don't you <a href="/#!/properties/create">create one</a>?
+    </div>
+</section>
