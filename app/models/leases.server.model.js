@@ -45,31 +45,38 @@ var LeaseSchema = new Schema({
 	},
 	startDate : {
 		type: Date,
-		min: Date('2015-01-01'),
-		max: Date('2045-01-01')
+		min: new Date('2015-01-01'),
+		max: new Date('2045-01-01')
 	},
 	endDate : {
 		type: Date,
-		min: Date('2015-01-01'),
-		max: Date('2045-01-01')
+		min: new Date('2015-01-01'),
+		max: new Date('2045-01-01')
 	},
 	leasePeriods : [
 		{
 			startDate : {
 				type: Date,
-				min: Date('2015-01-01'),
-				max: Date('2045-01-01')
+				min: new Date('2015-01-01'),
+				max: new Date('2045-01-01')
 			},
 			endDate : {
 				type: Date,
-				min: Date('2015-01-01'),
-				max: Date('2045-01-01')
+				min: new Date('2015-01-01'),
+				max: new Date('2045-01-01')
 			},
 		  monthlyRate : {
 				type: Number,
+				min: 100,
+				max: 99999
 			}
 		}
 	]
+});
+
+LeaseSchema.path('startDate').validate(function(value) {
+	console.log('date: ', value, ' and Date is ', Date('2015-01-01'));
+  if (value < Date('2015-01-01')) return next(new Error('date bad'));
 });
 
 mongoose.model('Lease', LeaseSchema);

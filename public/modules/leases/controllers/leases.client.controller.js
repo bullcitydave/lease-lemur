@@ -19,13 +19,14 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
                 leasePeriods: this.leasePeriods
 
             });
-
             // Redirect after save
-            lease.$save(function(response) {
-                $location.path('leases/' + response._id);
-            }, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
+            if (this.validate()) {
+              lease.$save(function(response) {
+                  $location.path('leases/' + response._id);
+              }, function(errorResponse) {
+  			            $scope.error = errorResponse.data.message;
+  		             });
+                 }
 
             // Clear form fields
             if (!$scope.error) {
@@ -110,6 +111,18 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
               $scope.leasePeriods[0] = singleLeasePeriod;
             }
           }
+        }
+
+        $scope.validate = function() {
+          var start = this.startDate,
+              end = this.endDate;
+          if (start < end) {
+              return true;
+          }
+          else {
+            $scope.error = "Start Date must precede End Date";
+          }
+
         }
     }
 ]);

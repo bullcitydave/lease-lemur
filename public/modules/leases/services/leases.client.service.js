@@ -7,6 +7,6 @@ angular.module('leases').factory('Leases', ['$resource', function($resource) {
     }, {
         update: {
             method: 'PUT'
-        }
+        },
     });
 }]);

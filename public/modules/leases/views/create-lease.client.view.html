@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-              <div class="panel panel-default" ng-init="leasePeriods = []", ng-show="leasePeriods.length > 0 || validateLeaseStartEndDates() ">
+              <div class="panel panel-default" ng-init="leasePeriods = []", ng-show="startDate && endDate && (leasePeriods.length > 0 || validateLeaseStartEndDates()) ">
                       <div class="panel-heading"><h4>Lease Periods<a
                               ng-click="addLeasePeriod()"
                               class="with-icon no-text add"></a></h4></div>
@@ -71,6 +71,13 @@
                                           <label class="control-label" for="endDate">End Date</label>
                                           <div class="controls">
                                             <input type="date" data-ng-model="leasePeriod.endDate"
+                                             class="form-control"/>
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="control-label" for="monthlyRate">Monthly Rate</label>
+                                          <div class="controls">
+                                            <input type="number" class="currency" min="100" step="100" max="99999" data-ng-model="leasePeriod.monthlyRate"
                                              class="form-control"/>
                                           </div>
                                       </div>
