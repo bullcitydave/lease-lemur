@@ -7,6 +7,9 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
 
         $scope.startDateOpen = false;
 
+        $scope.go = function ( path ) {
+          $location.path( path );
+        };
 
         // Create new Lease
         $scope.create = function() {
@@ -16,6 +19,7 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
                 property: this.property,
                 landlord: this.landlord,
                 startDate: this.startDate,
+                startDate: this.endDate,
                 leasePeriods: this.leasePeriods
 
             });

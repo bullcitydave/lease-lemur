@@ -2,8 +2,22 @@
     <div class="page-header">
         <h1>Leases</h1>
     </div>
+    <table class="table">
+      <tr>
+        <th>Client</th>
+        <th>Property</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      <tr data-ng-repeat="lease in leases", ng-click="go('leases/{{lease._id}}')">
+        <td data-th="Client">{{lease.tenant}}</td>
+        <td data-th="Property">{{lease.property}}</td>
+        <td data-th="Start">{{lease.startDate | date: format : medium}}</td>
+        <td data-th="End">{{lease.endDate | date: format : medium}}</td>
+      </tr>
+    </table>
     <div class="list-group">
-        <a data-ng-repeat="lease in leases" data-ng-href="#!/leases/{{lease._id}}" class="list-group-item">
+          <a data-ng-repeat="lease in leases" data-ng-href="#!/leases/{{lease._id}}" class="list-group-item">
             <small class="list-group-item-text">{{lease.created | date:'medium'}} / {{lease.user.displayName}}</small>
             <h4 class="list-group-item-heading">{{lease.name}}</h4>
         </a>
