@@ -47,9 +47,43 @@
                        class="form-control"/>
                     </div>
                 </div>
+
+              <div class="panel panel-default" ng-init="leasePeriods = []", ng-show="leasePeriods.length > 0 || validateLeaseStartEndDates() ">
+                      <div class="panel-heading"><h4>Lease Periods<a
+                              ng-click="addLeasePeriod()"
+                              class="with-icon no-text add"></a></h4></div>
+                      <div class="panel-body">
+                          <div ng-repeat="leasePeriod in leasePeriods"
+                               class="item-group">
+                              <div class="item-group-actions"><i
+                                      ng-click="removeLeasePeriod(leasePeriod)"
+                                      class="fa fa-times-circle"></i></div>
+                              <div class="item-group-contents single-row">
+                                  <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label" for="startDate">Start Date</label>
+                                        <div class="controls">
+                                          <input type="date" data-ng-model="leasePeriod.startDate"
+                                           class="form-control"/>
+                                        </div>
+                                    </div>
+                                      <div class="form-group">
+                                          <label class="control-label" for="endDate">End Date</label>
+                                          <div class="controls">
+                                            <input type="date" data-ng-model="leasePeriod.endDate"
+                                             class="form-control"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
+              </fieldset>
 				<div data-ng-show="error" class="text-danger">
 					<strong>{{error}}</strong>
 				</div>

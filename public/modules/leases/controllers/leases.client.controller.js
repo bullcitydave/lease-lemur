@@ -7,6 +7,7 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
 
         $scope.startDateOpen = false;
 
+
         // Create new Lease
         $scope.create = function() {
         	// Create new Lease object
@@ -77,7 +78,7 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
         };
 
         // Datepicker
-        // TODO this code isn't working so well right now
+        // TODO this code isn't working so well
         $scope.startDateOpen = false;
         $scope.endDateOpen = false;
 
@@ -85,5 +86,30 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
           var datePickerOpenName = datePicker + 'Open';
           $scope[datePickerOpenName] = !$scope[datePickerOpenName];
         };
+
+        $scope.validateLeaseStartEndDates = function() {
+          var start = $scope.startDate,
+              end = $scope.endDate;
+
+          if (start < end) {
+            if ($scope.leasePeriods.length <= 1) {
+              setSingleLeasePeriod();
+            }
+            return true;
+          }
+
+          function setSingleLeasePeriod() {
+            var singleLeasePeriod = {
+              startDate : $scope.startDate,
+              endDate : $scope.endDate
+            }
+            if ($scope.leasePeriods.length === 0) {
+              $scope.leasePeriods.push(singleLeasePeriod);
+            }
+            else {
+              $scope.leasePeriods[0] = singleLeasePeriod;
+            }
+          }
+        }
     }
 ]);
