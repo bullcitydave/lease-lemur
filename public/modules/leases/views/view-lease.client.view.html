@@ -1,14 +1,35 @@
 <section data-ng-controller="LeasesController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1>{{lease.name}}</h1>
-	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == lease.user._id">
-		<a class="btn btn-primary" href="/#!/leases/{{lease._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+		<div class="pull-right" data-ng-show="authentication.user._id == lease.user._id">
+			<a class="btn btn-primary" href="/#!/leases/{{lease._id}}/edit">
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+			<a class="btn btn-primary" data-ng-click="remove();">
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+		</div>
+		<div class="panel panel-default">
+					<div class="panel-heading">
+						{{lease.tenant}}<br/>{{lease.property}}
+					</div>
+					<div class="panel-body">
+						<h3><strong>Start Date </strong> {{lease.startDate}}</h3>
+						<h3><strong>End Date </strong> {{lease.endDate}}</h3>
+					</div>
+		</div>
+		<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3>Lease Periods</h3>
+					</div>
+					<div class="panel-body">
+						<div ng-repeat="leasePeriod in leasePeriods">
+							<h3><strong>Start Date </strong> {{leasePeriod.startDate}}</h3>
+							<h3><strong>End Date </strong> {{leasePeriod.endDate}}</h3>
+							<p><strong>Monthly Rate</strong> {{leasePeriod.monthlyRate}}</p>
+						</div>
+					</div>
+		</div>
+
 	</div>
 	<small>
 		<em class="text-muted">Posted on {{lease.created | date:'mediumDate'}} by {{lease.user.displayName}}</em>
