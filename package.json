@@ -1,11 +1,11 @@
 {
 	"name": "lease-lemur",
 	"description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
-	"version": "0.0.1", 
-	"author": "Dave Seidman", 
+	"version": "0.0.1",
+	"author": "Dave Seidman",
 	"engines": {
 		"node": "0.10.x",
-		"npm": "1.4.x"
+		"npm": "3.5.x"
 	},
 	"scripts": {
 		"start": "gulp",
