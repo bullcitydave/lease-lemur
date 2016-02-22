@@ -13,6 +13,21 @@ body {
 .panel-heading h3 {
     margin-top: 0;
 }
+
+.panel-heading h3 span+span::before {
+    content: '(';
+}
+.panel-heading h3 span+span::after {
+    content: ')';
+}
+
+h3 span+span {
+    padding-left: 5px;
+    font-style: italic;
+		font-size: 60%;
+		vertical-align: 20%;
+}
+
 .gridStyle {
     border: 1px solid rgb(212,212,212);
     width: 400px;

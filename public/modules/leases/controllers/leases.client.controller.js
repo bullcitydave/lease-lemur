@@ -73,7 +73,6 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
         // Find a list of Leases
         $scope.find = function() {
             $scope.leases = Leases.query();
-            $scope.gridOptions = { data: $scope.leases };
         };
 
         // Find existing Lease

@@ -96,14 +96,18 @@ exports.delete = function(req, res) {
  * List of Leases
  */
 exports.list = function(req, res) {
-	Lease.find().sort('-created').populate('user', 'displayName').exec(function(err, leases) {
-		if (err) {
-			return res.send(400, {
-				message: getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(leases);
-		}
+	Lease.find()
+		.sort('-created')
+		.populate('user', 'displayName')
+		.select({ tenant: 1, property: 1, landlord: 1, startDate: 1, endDate: 1 })
+		.exec(function(err, leases) {
+			if (err) {
+				return res.send(400, {
+					message: getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(leases);
+			}
 	});
 };
 

@@ -74,9 +74,9 @@ var LeaseSchema = new Schema({
 	]
 });
 
-LeaseSchema.path('startDate').validate(function(value) {
-	console.log('date: ', value, ' and Date is ', Date('2015-01-01'));
-  if (value < Date('2015-01-01')) return next(new Error('date bad'));
-});
+// LeaseSchema.path('startDate').validate(function(value) {
+// 	console.log('date: ', value, ' and Date is ', Date('2015-01-01'));
+//   if (value < Date('2015-01-01')) return next(new Error('date bad'));
+// });
 
 mongoose.model('Lease', LeaseSchema);

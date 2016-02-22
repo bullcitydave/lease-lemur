@@ -6,12 +6,14 @@
       <tr>
         <th>Client</th>
         <th>Property</th>
+        <th>Landlord</th>
         <th>Start Date</th>
         <th>End Date</th>
       </tr>
       <tr data-ng-repeat="lease in leases", ng-click="go('leases/{{lease._id}}')">
         <td data-th="Client">{{lease.tenant}}</td>
         <td data-th="Property">{{lease.property}}</td>
+        <td data-th="Landlord">{{lease.landlord}}</td>
         <td data-th="Start">{{lease.startDate | date: format : medium}}</td>
         <td data-th="End">{{lease.endDate | date: format : medium}}</td>
       </tr>
@@ -19,5 +21,4 @@
     <div class="alert alert-warning text-center" data-ng-hide="!leases.$resolved || leases.length">
     	No Leases yet, why don't you <a href="/#!/leases/create">create one</a>?
     </div>
-     <div class="gridStyle" ng-grid="gridOptions"></div>
 </section>

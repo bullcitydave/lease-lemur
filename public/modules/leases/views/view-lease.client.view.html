@@ -10,29 +10,47 @@
 		</div>
 		<div class="panel panel-default">
 					<div class="panel-heading">
-						<h2>{{lease.tenant}}</h2>
-						<h3>{{lease.property}}</h3>
+							<div class="row">
+								<div class="col-xs-12">
+									<h2>{{lease.tenant}}</h2>
+								</div>
+								<div class="col-xs-12">
+									<h3><span>{{lease.property}}</span>
+										<span>{{lease.landlord}}</span>
+									</h3>
+								</div>
+							</div>
 					</div>
 					<div class="panel-body">
-						<p>
-							<strong>Start Date </strong>
-							<span class="date"> {{lease.startDate | date: format : medium}}</span>
-						<p>
-							<strong>End Date </strong>
-							<span class="date"> {{lease.endDate | date: format : medium}}</span>
-						</p>
+						<div class="row">
+							<div class="col-xs-6 col-md-3">
+								<h4>Start Date </h4>
+								<span class="date"> {{lease.startDate | date: format : medium}}</span>
+							</div>
+							<div class="col-xs-6 col-md-3 col-md-push-1">
+								<h4>End Date </h4>
+								<span class="date"> {{lease.endDate | date: format : medium}}</span>
+							</div>
 					</div>
-		</div>
+				</div>
+			</div>
 		<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4>Lease Periods</h4>
 					</div>
 					<div class="panel-body">
-						<div ng-repeat="leasePeriod in lease.leasePeriods">
-							<h3><strong>Start Date </strong> {{leasePeriod.startDate | date: format : medium}}</h3>
-							<h3><strong>End Date </strong> {{leasePeriod.endDate | date: format : medium}}</h3>
-							<p><strong>Monthly Rate</strong> {{leasePeriod.monthlyRate}}</p>
-						</div>
+						<table class="table">
+				      <tr>
+				        <th>Start Date</th>
+				        <th>End Date</th>
+				        <th>Monthly Rate</th>
+				      </tr>
+				      <tr data-ng-repeat="leasePeriod in lease.leasePeriods">
+				        <td data-th="Start Date">{{leasePeriod.startDate | date: format : medium}}</td>
+				        <td data-th="End Date">{{leasePeriod.startDate | date: format : medium}}</td>
+				        <td data-th="Monthly Rate">${{leasePeriod.monthlyRate | number : 2}}</td>
+				      </tr>
+				    </table>
 					</div>
 		</div>
 
