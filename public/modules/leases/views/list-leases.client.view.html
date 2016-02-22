@@ -1,9 +1,15 @@
 <section data-ng-controller="LeasesController" data-ng-init="find()">
     <div class="page-header">
         <h1>Leases</h1>
+        <div class="pull-right">
+          <button  ng-csv="leases" filename="allleases.csv"  type="button">
+            <i class="glyphicon glyphicon-file"></i>
+          </button>
+          <span>Download CSV</span>
+        </div>
     </div>
     <table class="table">
-      <tr>
+      <tr ng-show="leases.length > 0">
         <th>Client</th>
         <th>Property</th>
         <th>Landlord</th>
@@ -21,4 +27,5 @@
     <div class="alert alert-warning text-center" data-ng-hide="!leases.$resolved || leases.length">
     	No Leases yet, why don't you <a href="/#!/leases/create">create one</a>?
     </div>
+
 </section>

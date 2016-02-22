@@ -12,9 +12,11 @@ var rename = require('gulp-rename');
 var mocha = require('gulp-mocha');
 var karma = require('gulp-karma');
 
-var applicationJavaScriptFiles, 
+var applicationJavaScriptFiles,
     applicationCSSFiles,
     applicationTestFiles;
+
+
 
 gulp.task('jshint', function() {
   gulp.src(['gulpFile.js', 'server.js', 'config/**/*.js', 'app/**/*.js', 'public/js/**/*.js', 'public/modules/**/*.js'])
@@ -48,7 +50,7 @@ gulp.task('cssmin', function () {
      .pipe(concat('application.css'))
      .pipe(minifyCSS())
      .pipe(rename('application.min.css'))
-     .pipe(gulp.dest('public/dist')); 
+     .pipe(gulp.dest('public/dist'));
 });
 
 gulp.task('mochaTest', function () {

@@ -28,20 +28,24 @@ h3 span+span {
 		vertical-align: 20%;
 }
 
-.gridStyle {
-    border: 1px solid rgb(212,212,212);
-    width: 400px;
-    height: 300px
-}
 
 .panel-body .form-group {
 	padding: 20px;
 }
 
-input[type="number].form-control {
+tr:not(:first-child):hover {
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+
+input[type="number"].form-control {
     line-height: 34px;
 }
 
+.page-header {
+	margin-top: 50px !important;
+}
 
 
 .content {
@@ -52,9 +56,4 @@ input[type="number].form-control {
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
-}
-
-tr:not(:first-child):hover {
-  background: #f0f0f0;
-  cursor: pointer;
 }

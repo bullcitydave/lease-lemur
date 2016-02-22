@@ -5,6 +5,6 @@ angular.module('tenants').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
 		Menus.addMenuItem('topbar', 'Tenants', 'tenants');
-		Menus.addMenuItem('topbar', 'New Tenant', 'tenants/create');
+		// Menus.addMenuItem('topbar', 'New Tenant', 'tenants/create');
 	}
 ]);
