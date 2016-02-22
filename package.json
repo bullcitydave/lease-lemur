@@ -5,7 +5,7 @@
 	"author": "Dave Seidman",
 	"engines": {
 		"node": "0.10.x",
-		"npm": "3.5.x"
+		"npm": "3.7.3"
 	},
 	"scripts": {
 		"start": "gulp",
