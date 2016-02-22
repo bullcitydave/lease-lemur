@@ -19,7 +19,7 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
                 property: this.property,
                 landlord: this.landlord,
                 startDate: this.startDate,
-                startDate: this.endDate,
+                endDate: this.endDate,
                 leasePeriods: this.leasePeriods
 
             });
@@ -73,6 +73,7 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
         // Find a list of Leases
         $scope.find = function() {
             $scope.leases = Leases.query();
+            $scope.gridOptions = { data: $scope.leases };
         };
 
         // Find existing Lease

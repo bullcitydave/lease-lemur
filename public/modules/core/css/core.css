@@ -1,3 +1,26 @@
+/*CUSTOM!*/
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body {
+	font-family: Montserrat !important;
+}
+
+.panel-heading h2 {
+    text-transform: uppercase;
+    letter-spacing: 1.25px;
+}
+.panel-heading h3 {
+    margin-top: 0;
+}
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px;
+    height: 300px
+}
+
+
+
 .content {
 	margin-top: 50px;
 }

@@ -16,13 +16,8 @@
         <td data-th="End">{{lease.endDate | date: format : medium}}</td>
       </tr>
     </table>
-    <div class="list-group">
-          <a data-ng-repeat="lease in leases" data-ng-href="#!/leases/{{lease._id}}" class="list-group-item">
-            <small class="list-group-item-text">{{lease.created | date:'medium'}} / {{lease.user.displayName}}</small>
-            <h4 class="list-group-item-heading">{{lease.name}}</h4>
-        </a>
-    </div>
     <div class="alert alert-warning text-center" data-ng-hide="!leases.$resolved || leases.length">
     	No Leases yet, why don't you <a href="/#!/leases/create">create one</a>?
     </div>
+     <div class="gridStyle" ng-grid="gridOptions"></div>
 </section>
