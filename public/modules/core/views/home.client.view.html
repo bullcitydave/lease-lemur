@@ -1,32 +1,47 @@
 <section data-ng-controller="HomeController">
-    <h1 class="text-center">THANK YOU FOR DOWNLOADING MEAN.JS</h1>
+    <h1 class="text-center">THANK YOU FOR CHECKING OUT LEASE LEMUR!</h1>
     <section>
         <p>
-        	Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
+        	Welcome to the premiere commerical real estate lease tracking system on the block!
         </p>
         <dl>
-            <dt>MongoDB</dt>
+            <dt>Code Repository</dt>
             <dd>
-                Go through <a target="_blank" href="http://mongodb.org">MongoDB Official Website</a> and proceed to its <a target="_blank" href="http://docs.mongodb.org/manual/">Great Manual</a>, which should help you understand NoSQL and MongoDB better.
+                It can be be found on <a target="_blank" href="https://github.com/bullcitydave/lease-lemur">Github.</a> The application was built off of a MEAN.js scaffolding.
             </dd>
-            <dt>Express</dt>
+            <dt>Here's what it can do right now!</dt>
             <dd>
-                The best way to understand Express is through its <a target="_blank" href="http://expressjs.com"> Official Website</a>, particularly <a target="_blank" href="http://expressjs.com/guide.html">The Express Guide</a>; you can also go through this <a target="_blank" href="http://stackoverflow.com/questions/8144214/learning-express-for-node-js">StackOverflow Thread</a> for more resources.
+                <li>Login in as user 'laura.lemur' and password 'wiredtri'. Or you can created a new email-based account. (The social account APIs are not currently configured).
+                </li>
+                <li>View a list of all existing Leases</li>
+                <li>View an existing Lease</li>
+                <li>Create a new Lease. One leasing period will be created by default, initially matching the duration of the Lease. Multiple leasing periods can be added.</li>
+                <li>Edit Leases that you have created</li>
+                <li>Deleting Leases that you have created</li>
+                <li>Download a CSV of all Leases (basic fields only)</li>
             </dd>
-            <dt>AngularJS</dt>
-            <dd>
-                Angular's <a target="_blank" href="http://angularjs.org">Official Website</a> is a great starting point. You can also use <a target="_blank" href="http://www.thinkster.io/">Thinkster Popular Guide</a>, and the <a target="_blank" href="https://egghead.io/">Egghead Videos</a>.
+            <dt>Here's what needs to be done!</dt>
+            <dd>The infrastructure is up and running, but the heart of the application needs to be built:
+                <li>The required reports. The basic CSV is just a proof-of-concept of a one-click solution.
+                </li>
+                <li>Validation of lease periods. There is no validation currently other than that overall start date must proceed end date, and the five initial fields are required.</li>
+                <li>Limiting lease periods to begin and end on the 1st of the month.</li>
             </dd>
-            <dt>Node.js</dt>
+            <dt>Ideal functionality</dt>
+            <dd>Creation of supporting entities. The top meny bar has links but the data models have not been set up.</dd>
+              <li>Properties</li>
+              <li>Landlords</li>
+              <li>Clients</li>
+            <dt>Ideal framework technologies not currently implemented</dt>
             <dd>
-                Start by going through <a target="_blank" href="http://nodejs.org">Node.js Official Website</a> and this <a target="_blank" href="http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js">StackOverflow Thread</a>, which should get you going with the Node.js platform in no time.
+                Sass, Jade, more robust use of Angular, switch to relational database.
             </dd>
         </dl>
         <p class="alert alert-info">
-            When you're done with those resources and feel you understand the basic principles continue to the <a target="_blank" href="http://meanjs.org/docs.html">MEAN.JS Documentation</a>.
+            That's basically it. Please <a href="mailto:bullcitydave@gmail.com">Dave Seidman</a> with any questions or comments.
         </p>
         <br>
-        <br>Enjoy &amp; Keep Us Updated,
-        <br>The MEAN.JS Team.
+        <br>Enjoy!
+        <br>The Lease Lemur Team
     </section>
 </section>
