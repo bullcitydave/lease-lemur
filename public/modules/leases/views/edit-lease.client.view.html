@@ -23,7 +23,8 @@
                             <input type="text" data-ng-model="lease.landlord" id="landlord" text="landlord" class="form-control" required>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
+                      <div class="form-group col-md-6">
                         <label class="control-label" for="startDate">Start Date</label>
                         <div class="controls">
                           <!-- TODO datepicker not cooperating
@@ -32,22 +33,44 @@
                                             data-ng-model=startDate
                                           ``  novalidate="novalidate" class="form-control"/> -->
                                           <!-- data-ng-model="lease.startDateFormatted" -->
-                          <input name="startDate" type="date" value="{{lease.startDate | date:'yyyy-MM-dd'}}"
-                           class="form-control"/>
-                          <!-- <span class="input-group-btn">
+
+
+                                                      <p class="input-group">
+                                                        <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="lease.startDate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                                        <span class="input-group-btn">
+                                                          <button type="button" class="btn btn-default" ng-click="toggleDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                        </span>
+                                                      </p>
+                                                  </div>
+                                                </div>
+<div class="form-group col-md-6">
+    <label class="control-label" for="endDate">End Date</label>
+    <div class="controls">
+
+                                                              <p class="input-group">
+                                                                <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="lease.endDate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                                                <span class="input-group-btn">
+                                                                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                                </span>
+                                                              </p>
+                                                          </div>
+
+
+                                                                        <!-- <span class="input-group-btn">
                             <button type="button" ng-click="toggleDatePicker($event, 'startDate')"  class="btn btn-default">
                               <i class="fa fa-calendar"></i>
                             </button>
                           </span> -->
-                        </div>
+                      
                     </div>
-                    <div class="form-group">
+                  </div>
+                    <!-- <div class="form-group">
                         <label class="control-label" for="endDate">End Date</label>
                         <div class="controls">
                           <input name="endDate" type="date" value="{{lease.endDate | date:'yyyy-MM-dd'}}"
                            class="form-control"/>
                         </div>
-                    </div>
+                    </div> -->
 
                   <div class="panel panel-default" ng-init="leasePeriods = []", ng-show="startDate && endDate && (leasePeriods.length > 0 || validateLeaseStartEndDates()) ">
                           <div class="panel-heading"><h4>Lease Periods<a

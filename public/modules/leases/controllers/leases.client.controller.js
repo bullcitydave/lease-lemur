@@ -92,7 +92,7 @@ angular.module('leases').controller('LeasesController', ['$scope',  '$stateParam
         //   return new Date(mongoDate);
         // }
 
-
+        $scope.dateFormat = 'dd-MMMM-yyyy';
 
         $scope.toggleDatePicker = function(event, datePicker) {
           var datePickerOpenName = datePicker + 'Open';
