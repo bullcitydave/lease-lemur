@@ -28,7 +28,7 @@
                         <label class="control-label" for="startDate">Start Date</label>
                         <div class="controls">
                             <p class="input-group">
-                              <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="startDateString" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                              <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" data-ng-model="startDateString" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                               <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="toggleDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
                               </span>
@@ -39,7 +39,7 @@
                           <label class="control-label" for="endDate">End Date</label>
                           <div class="controls">
                             <p class="input-group">
-                              <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="endDateString" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                              <input type="text" class="form-control" uib-datepicker-popup="{{dateFormat}}" data-ng-model="endDateString" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                               <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
                               </span>

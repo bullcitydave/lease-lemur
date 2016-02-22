@@ -62,19 +62,22 @@ angular.module('leases').controller('LeasesController', ['$scope', '$filter', '$
         // Update existing Lease
         $scope.update = function() {
             var lease = $scope.lease;
-            lease.startDate = $scope.lease.startDateString;
-            lease.endDate = $scope.lease.endDateString;
+            lease.startDate = $scope.startDateString;
+            lease.endDate = $scope.endDateString;
             for (var period in lease.leasePeriods) {
               lease.leasePeriods[period].startDate = $scope.lease.leasePeriods[period].startDateString;
               lease.leasePeriods[period].endDate = $scope.lease.leasePeriods[period].endDateString;
             }
 
+            if (this.validate()) {
+
             lease.$update(function() {
                 $location.path('leases/' + lease._id);
             }, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-        };
+          				$scope.error = errorResponse.data.message;
+          			});
+              }
+          };
 
         // Find a list of Leases
         $scope.find = function() {
@@ -87,6 +90,7 @@ angular.module('leases').controller('LeasesController', ['$scope', '$filter', '$
                 leaseId: $stateParams.leaseId
             });
             $scope.lease.$promise.then(function (data) {
+              $scope.lease = data;
               $scope.startDateString = $filter('date')(data.startDate, 'MM/dd/yyyy');
               $scope.endDateString = $filter('date')(data.endDate, 'MM/dd/yyyy');
               for (var period in $scope.lease.leasePeriods) {
@@ -113,6 +117,37 @@ angular.module('leases').controller('LeasesController', ['$scope', '$filter', '$
           $scope[datePickerOpenName] = !$scope[datePickerOpenName];
         };
 
+        $scope.sortDateRanges = function(ranges) {
+          return ranges.sort(function(a,b) { return a.startDate > b.startDate; })
+        }
+
+        // $scope.mainDateRangeAndPeriodsSync = function(start, end) {
+        //   if (start === lease.startDate && end === lease.endDate) {
+        //     return true;
+        //   }
+        //   else {
+        //     $scope.error = "Date ranges of periods must match up with overall lease date range";
+        //     return false;
+        //   }
+        // }
+
+        $scope.rangePeriodsNoOverlap = function(ranges) {
+          var sortedRanges = this.sortDateRanges(ranges);
+          var first = sortedRanges[0].startDate;
+          var last = sortedRanges[sortedRanges.length-1].endDate;
+          // if (this.mainDateRangeAndPeriodsSync(first, last)) {
+            for (var i=0; i < sortedRanges.length - 1; i++) {
+              if (sortedRanges[i].startDate === sortedRanges[i+1].startDate ||
+                sortedRanges[i].endDate > sortedRanges [i+1].startDate) {
+                 $scope.error = "Lease periods " + sortedRanges[i].startDate + ' - ' + sortedRanges[i].endDate + ' and ' + sortedRanges[i+1].startDate + ' - ' + sortedRanges[i+1].endDate + ' overlap';
+                 return false;
+               }
+             }
+             return true;
+          //  }
+         }
+
+
         $scope.validateLeaseStartEndDates = function() {
           var start = $scope.startDate,
               end = $scope.endDate;
@@ -138,15 +173,20 @@ angular.module('leases').controller('LeasesController', ['$scope', '$filter', '$
           }
         }
 
-        $scope.validate = function() {
-          var start = this.startDate,
-              end = this.endDate;
+        $scope.validateMainDateRange = function() {
+          var start = this.lease ? this.lease.startDate : this.startDate;
+          var end  = this.lease ? this.lease.endDate : this.endDate;
           if (start < end) {
               return true;
           }
           else {
             $scope.error = "Start Date must precede End Date";
+            return false;
           }
+        }
+
+        $scope.validate = function() {
+          return this.validateMainDateRange() && this.rangePeriodsNoOverlap(this.lease ? this.lease.leasePeriods : this.leasePeriods);
         }
 
         $scope.testing = function() { console.log('trying!'); };
