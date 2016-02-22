@@ -34,6 +34,14 @@ h3 span+span {
     height: 300px
 }
 
+.panel-body .form-group {
+	padding: 20px;
+}
+
+input[type="number].form-control {
+    line-height: 34px;
+}
+
 
 
 .content {

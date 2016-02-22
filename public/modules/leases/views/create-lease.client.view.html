@@ -1,6 +1,6 @@
 <section data-ng-controller="LeasesController">
     <div class="page-header">
-        <h1>New Lease</h1>
+        <h1 ng-click="testing()">New Lease</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
@@ -31,7 +31,7 @@
                                         is-open="startDate" close-text="Close"
                                         data-ng-model=startDate
                                       ``  novalidate="novalidate" class="form-control"/> -->
-                      <input name="startDate" type="date" data-ng-model=startDate
+                      <input name="startDate" type="date" data-ng-model="startDate"
                        class="form-control"/>
                       <!-- <span class="input-group-btn">
                         <button type="button" ng-click="toggleDatePicker($event, 'startDate')"  class="btn btn-default">
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label class="control-label" for="endDate">End Date</label>
                     <div class="controls">
-                      <input name="endDate" type="date" data-ng-model=endDate
+                      <input name="endDate" type="date" data-ng-model="endDate"
                        class="form-control"/>
                     </div>
                 </div>
@@ -55,31 +55,40 @@
                       <div class="panel-body">
                           <div ng-repeat="leasePeriod in leasePeriods"
                                class="item-group">
-                              <div class="item-group-actions"><i
-                                      ng-click="removeLeasePeriod(leasePeriod)"
-                                      class="fa fa-times-circle"></i></div>
+
+
                               <div class="item-group-contents single-row">
                                   <div class="row">
-                                    <div class="form-group">
+                                    <div class="form-group col-xd-12 col-md-3">
                                         <label class="control-label" for="startDate">Start Date</label>
                                         <div class="controls">
                                           <input type="date" data-ng-model="leasePeriod.startDate"
                                            class="form-control"/>
                                         </div>
                                     </div>
-                                      <div class="form-group">
+                                      <div class="form-group col-xd-12 col-md-3">
                                           <label class="control-label" for="endDate">End Date</label>
                                           <div class="controls">
                                             <input type="date" data-ng-model="leasePeriod.endDate"
                                              class="form-control"/>
                                           </div>
                                       </div>
-                                      <div class="form-group">
+                                      <div class="form-group col-xd-12 col-md-3">
                                           <label class="control-label" for="monthlyRate">Monthly Rate</label>
                                           <div class="controls">
                                             <input type="number" class="currency" min="100" step="100" max="99999" data-ng-model="leasePeriod.monthlyRate"
                                              class="form-control"/>
                                           </div>
+                                      </div>
+                                      <div class="item-group-actions col-xd-12 col-md-3">
+                                        <!-- <i ng-click="removeLeasePeriod(leasePeriod)"
+                                              class="fa fa-times-circle"></i> -->
+                                        <div class="btn btn-primary">
+                                          			<i class="glyphicon glyphicon-plus" ng-click="addLeasePeriod()"></i>
+                                    		</div>
+                                        <div class="btn btn-primary" ng-click="testing()">
+                                                <i class="glyphicon glyphicon-remove" ng-click="deleteLeasePeriod()"></i>
+                                        </div>
                                       </div>
                                   </div>
                               </div>

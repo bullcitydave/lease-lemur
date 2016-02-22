@@ -87,7 +87,7 @@ angular.module('leases').controller('LeasesController', ['$scope',  '$stateParam
         $scope.startDateOpen = false;
         $scope.endDateOpen = false;
 
-        // 
+        //
         // $scope.dateFormat = function (mongoDate) {
         //   return new Date(mongoDate);
         // }
@@ -133,7 +133,34 @@ angular.module('leases').controller('LeasesController', ['$scope',  '$stateParam
           else {
             $scope.error = "Start Date must precede End Date";
           }
-
         }
+
+        $scope.testing = function() { console.log('trying!'); };
+
+
+        $scope.addLeasePeriod = function () {
+              //  $scope.leasePeriods.push(new LeasePeriod(leasePeriodData));
+              $scope.leasePeriods.push(new LeasePeriod());
+         }
+
+
+        function LeasePeriod() {
+         var leasePeriodData = {
+           startDate : "",
+           endDate: "",
+           monthlyRate: ""
+         }
+         return leasePeriodData;
+        };
+
+        var itemMethods = {
+
+          addLeasePeriod: function (leasePeriodData) {
+               this.leasePeriods.push(new LeasePeriod(leasePeriodData));
+             }
+           };
+
+
+         angular.extend(Leases.prototype, itemMethods);
     }
 ]);
