@@ -1,7 +1,7 @@
 'use strict';
 
 // Leases controller
-angular.module('leases').controller('LeasesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Leases',
+angular.module('leases').controller('LeasesController', ['$scope',  '$stateParams', '$location', 'Authentication', 'Leases',
     function($scope, $stateParams, $location, Authentication, Leases) {
         $scope.authentication = Authentication;
 
@@ -86,6 +86,13 @@ angular.module('leases').controller('LeasesController', ['$scope', '$stateParams
         // TODO this code isn't working so well
         $scope.startDateOpen = false;
         $scope.endDateOpen = false;
+
+        // 
+        // $scope.dateFormat = function (mongoDate) {
+        //   return new Date(mongoDate);
+        // }
+
+
 
         $scope.toggleDatePicker = function(event, datePicker) {
           var datePickerOpenName = datePicker + 'Open';
