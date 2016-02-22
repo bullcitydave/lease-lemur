@@ -1,8 +1,8 @@
 'use strict';
 
 // Leases controller
-angular.module('leases').controller('LeasesController', ['$scope',  '$stateParams', '$location', 'Authentication', 'Leases',
-    function($scope, $stateParams, $location, Authentication, Leases) {
+angular.module('leases').controller('LeasesController', ['$scope', '$filter', '$stateParams', '$location', 'Authentication', 'Leases',
+    function($scope,  $filter, $stateParams, $location, Authentication, Leases) {
         $scope.authentication = Authentication;
 
         $scope.startDateOpen = false;
@@ -62,6 +62,12 @@ angular.module('leases').controller('LeasesController', ['$scope',  '$stateParam
         // Update existing Lease
         $scope.update = function() {
             var lease = $scope.lease;
+            lease.startDate = $scope.lease.startDateString;
+            lease.endDate = $scope.lease.endDateString;
+            for (var period in lease.leasePeriods) {
+              lease.leasePeriods[period].startDate = $scope.lease.leasePeriods[period].startDateString;
+              lease.leasePeriods[period].endDate = $scope.lease.leasePeriods[period].endDateString;
+            }
 
             lease.$update(function() {
                 $location.path('leases/' + lease._id);
@@ -79,6 +85,14 @@ angular.module('leases').controller('LeasesController', ['$scope',  '$stateParam
         $scope.findOne = function() {
             $scope.lease = Leases.get({
                 leaseId: $stateParams.leaseId
+            });
+            $scope.lease.$promise.then(function (data) {
+              $scope.startDateString = $filter('date')(data.startDate, 'MM/dd/yyyy');
+              $scope.endDateString = $filter('date')(data.endDate, 'MM/dd/yyyy');
+              for (var period in $scope.lease.leasePeriods) {
+                $scope.lease.leasePeriods[period].startDateString = $filter('date')($scope.lease.leasePeriods[period].startDate, 'MM/dd/yyyy');
+                $scope.lease.leasePeriods[period].endDateString = $filter('date')($scope.lease.leasePeriods[period].endDate, 'MM/dd/yyyy');
+              }
             });
         };
 

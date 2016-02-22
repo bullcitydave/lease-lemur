@@ -25,11 +25,11 @@
 						<div class="row">
 							<div class="col-xs-6 col-md-3">
 								<h4>Start Date </h4>
-								<span class="date"> {{lease.startDate | date: format : medium}}</span>
+								<span class="date"> {{lease.startDate | date: 'MM/dd/yyyy'}}</span>
 							</div>
 							<div class="col-xs-6 col-md-3 col-md-push-1">
 								<h4>End Date </h4>
-								<span class="date"> {{lease.endDate | date: format : medium}}</span>
+								<span class="date"> {{lease.endDate | date: 'MM/dd/yyyy'}}</span>
 							</div>
 					</div>
 				</div>
@@ -46,8 +46,8 @@
 				        <th>Monthly Rate</th>
 				      </tr>
 				      <tr data-ng-repeat="leasePeriod in lease.leasePeriods">
-				        <td data-th="Start Date">{{leasePeriod.startDate | date: format : medium}}</td>
-				        <td data-th="End Date">{{leasePeriod.startDate | date: format : medium}}</td>
+				        <td data-th="Start Date">{{leasePeriod.startDate | date: 'MM/dd/yyyy'}}</td>
+				        <td data-th="End Date">{{leasePeriod.endDate | date: 'MM/dd/yyyy'}}</td>
 				        <td data-th="Monthly Rate">${{leasePeriod.monthlyRate | number : 2}}</td>
 				      </tr>
 				    </table>
